@@ -56,6 +56,17 @@ public class AdmissionService {
                         HttpStatus.NOT_FOUND,
                         "Bed not found with id: " + bedId));
 
+
+        if (admissionRepository.existsByPatient_IdAndStatus(
+                patientId, "ACTIVE")) {
+
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Patient already has an active admission"
+            );
+        }
+
+
         if (!"AVAILABLE".equalsIgnoreCase(bed.getStatus())) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,

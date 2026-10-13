@@ -2,7 +2,9 @@ package com.hospital.resource.hospital_resource_system.controller;
 import org.springframework.web.bind.annotation.PatchMapping;
 import com.hospital.resource.hospital_resource_system.entity.Admission;
 import com.hospital.resource.hospital_resource_system.service.AdmissionService;
-
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +30,8 @@ public class AdmissionController {
     }
 
     @PostMapping
-    public Admission createAdmission(@RequestBody AdmissionRequest request) {
+    public Admission createAdmission(@Valid @RequestBody  AdmissionRequest request) {
+
         return admissionService.createAdmission(
                 request.patientId(),
                 request.bedId());
@@ -47,5 +50,13 @@ public class AdmissionController {
     }
 
 
-    public record AdmissionRequest(Long patientId, Long bedId) {}
+    public record AdmissionRequest(
+            @NotNull(message = "Patient ID is required")
+            @Positive(message = "Patient ID must be positive")
+            Long patientId,
+
+            @NotNull(message = "Bed ID is required")
+            @Positive(message = "Bed ID must be positive")
+            Long bedId
+    ) {}
 }

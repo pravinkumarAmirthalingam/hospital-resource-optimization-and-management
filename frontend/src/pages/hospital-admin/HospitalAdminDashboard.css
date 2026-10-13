@@ -1,0 +1,399 @@
+/* ============================================================
+   Hospital Admin Dashboard Layout
+   ============================================================ */
+
+/* Main Grid: Left (wide) + Right (sidebar) */
+.ha-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-6);
+}
+
+/* ── Left Column ────────────────────────────────────────────── */
+.ha-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Row 1: Bed overview + 4 stat cards */
+.ha-row-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+/* Stat grid: 2x2 */
+.ha-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.ha-stat-card {
+  padding: var(--space-5);
+}
+
+.ha-stat-card .card-title {
+  font-size: var(--text-sm);
+  line-height: 1.3;
+}
+
+.ha-stat-row {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Row 2: Equipment + Schedule */
+.ha-row-2 {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-6);
+}
+
+/* ── Bed Overview ───────────────────────────────────────────── */
+.ha-bed-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.ha-bed-visual {
+  display: flex;
+  flex-direction: column;
+}
+
+.ha-bed-ready-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-success);
+  font-weight: var(--fw-medium);
+  background: var(--color-success-light);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-bottom: var(--space-4);
+}
+
+.ha-bed-image {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-4) 0;
+}
+
+.ha-bed-tags {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.ha-bed-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-3);
+  line-height: 1.5;
+}
+
+.ha-bed-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.ha-bed-cleaned {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* ── Equipment Insight ──────────────────────────────────────── */
+.ha-equipment-body {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.ha-equipment-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.ha-key-insight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  background: var(--color-background);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-2);
+}
+
+.ha-key-insight strong {
+  color: var(--color-text-primary);
+}
+
+/* ── Staff Schedule ─────────────────────────────────────────── */
+.ha-schedule-month {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+/* Calendar strip */
+.ha-calendar-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.ha-cal-nav {
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ha-cal-nav:hover {
+  color: var(--color-primary);
+}
+
+.ha-cal-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 44px;
+}
+
+.ha-cal-day:hover {
+  background: var(--color-background);
+}
+
+.ha-cal-day.today {
+  background: var(--color-text-primary);
+  color: white;
+  border-radius: var(--radius-lg);
+}
+
+.ha-cal-day.today .ha-cal-day-name,
+.ha-cal-day.today .ha-cal-day-num {
+  color: white;
+}
+
+.ha-cal-day-name {
+  font-size: 0.625rem;
+  color: var(--color-text-tertiary);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+}
+
+.ha-cal-day-num {
+  font-size: var(--text-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+}
+
+.ha-cal-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  margin-top: 1px;
+}
+
+.ha-cal-day.today .ha-cal-dot {
+  background: white;
+}
+
+/* Schedule list */
+.ha-schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.ha-schedule-item {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.ha-schedule-time {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  font-weight: var(--fw-medium);
+  min-width: 70px;
+  padding-top: 2px;
+}
+
+.ha-schedule-detail {
+  display: flex;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.ha-schedule-dot-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.ha-schedule-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.ha-schedule-staff {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  display: block;
+}
+
+.ha-schedule-assistant {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  margin-top: 2px;
+}
+
+/* ── Right Column: Active Staff ─────────────────────────────── */
+.ha-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.ha-active-staff {
+  position: sticky;
+  top: calc(var(--topbar-height) + var(--space-8));
+}
+
+/* Featured Doctor */
+.ha-featured-doctor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: var(--space-5);
+  position: relative;
+}
+
+.ha-featured-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.ha-featured-avatar {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-2xl);
+}
+
+.ha-featured-name {
+  font-size: var(--text-md);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-2);
+}
+
+.ha-featured-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  justify-content: center;
+}
+
+/* On Duty List */
+.ha-duty-section {
+  padding-top: 0;
+}
+
+.ha-duty-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  cursor: pointer;
+}
+
+.ha-duty-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ha-duty-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+}
+
+.ha-duty-avatar {
+  font-size: var(--text-xs);
+}
+
+.ha-duty-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ha-duty-name {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+}
+
+.ha-duty-dept {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .ha-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ha-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .ha-row-1 {
+    grid-template-columns: 1fr;
+  }
+}

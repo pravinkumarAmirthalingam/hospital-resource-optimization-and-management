@@ -1,0 +1,23 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--topbar-height);
+  flex: 1;
+  padding: var(--space-8);
+  min-height: calc(100vh - var(--topbar-height));
+  box-sizing: border-box;
+  width: calc(100% - var(--sidebar-width));
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: var(--space-4);
+  }
+}
